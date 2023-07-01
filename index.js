@@ -6,7 +6,7 @@ const app = express();
 
 //import functions
 let {register} = require('./services/register');
-let {login} = require('./services/login');
+let {login, getProfile} = require('./services/login');
 
 //config
 app.use(bodyParser.json());
@@ -14,8 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 //Routes
-app.get('/login', login);
+app.post('/login', login);
 app.post('/signup', register);
+app.get('/profile', getProfile);
 
 //Server
 app.listen(PORT, () => {
